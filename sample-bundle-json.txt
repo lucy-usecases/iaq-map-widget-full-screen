@@ -1,0 +1,37 @@
+{
+    "id": "6c56676c-f9c0-4d4e-d33f-70df90c53e31",
+    "author": "",
+    "widgets": [
+        {
+            "id": "iaq_full_screen",
+            "name": "iaq_full_screen",
+            "description": "A sample widget",
+            "icon": "",
+            "tags":[]
+        }
+    ],
+    "sidebarLinks": [
+        {
+            "id": "iaq_full_screenLink",
+            "label": "",
+            "description": "",
+            "target": "",
+            "icon": "",
+            "roles":[]
+        }
+    ],
+    "uis": [
+        {
+            "id": "iaq_full_screenLink",
+            "label":"",
+            "description": "",
+            "roles": []
+        }
+    ],
+    "menuItems": [
+        {
+            "id": "iaq_full_screenLink",
+            "title": "iaq_full_screen"
+        }
+    ]
+}
