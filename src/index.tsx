@@ -532,7 +532,7 @@ const IAQOccupancyMapFullScreened: React.FunctionComponent<IIAQOccupancyMapProps
 }
 
 registerWidget({
-    id: "iaq-occupancy-map-widget-full-screened",
+    id: "iaq-occupancy-map-full-screen",
     name: "Full-screen floor map with IAQ and Occupancy.",
     widget: IAQOccupancyMapFullScreened,
     configs: {
@@ -568,28 +568,5 @@ registerWidget({
         ]
     },
 })
-
-/**
- * Register as a Sidebar Link
- */
-/*
-registerLink({
-    id: "iaq_full_screen",
-    label: "Iaq_full_screen",
-    // click: () => alert("Hello"),
-    component: Iaq_full_screenWidget
-});
-*/
-
-/**
- * Register as a UI
- */
-
- /*
-registerUI({
-    id:"iaq_full_screen",
-    component: Iaq_full_screenWidget
-});
-*/
 
 export default IAQOccupancyMapFullScreened

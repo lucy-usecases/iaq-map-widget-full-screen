@@ -1,21 +1,15 @@
 {
     "id": "3058fbf7-b48a-48c7-f5bb-3e3c855cb533",
-    "author": "",
+    "author": "eutech",
     "widgets": [
         
         {
-            "id":"iaq-occupancy-map-full-screened-widget",
-            "name": "IAQ - Occupancy map full screen",
+            "id":"iaq-occupancy-map-full-screen",
+            "name": "IAQ/Occupancy map full screen",
             "description":"A Map widget to show IAQ and Occupancy for a floor in full screen"
         }
     ],
-    "sidebarLinks": [
-        
-    ],
-    "uis": [
-       
-    ],
-    "menuItems": [
-        
-    ]
+    "sidebarLinks": [],
+    "uis": [],
+    "menuItems": []
 }
