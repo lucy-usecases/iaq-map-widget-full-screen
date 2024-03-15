@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { DatePicker, DateTimePicker, DropDownButton, IconButton, IMarker, Loading, MapComponent, Select, ToggleFilter, useUpdateWidgetProps, WidgetWrapper } from 'uxp/components'
-import { debounce, round } from './utils';
+import { darkenColor, debounce, lightenColor, round } from './utils';
 import { IContextProvider, registerWidget } from './uxp'
 import classNames from 'classnames';
 import './styles.scss'
@@ -44,6 +44,12 @@ const IAQOccupancyMapFullScreened: React.FunctionComponent<IIAQOccupancyMapProps
         { label: 'CO2', value: "co2" },
         { label: 'Humidity', value: "rh" }
     ]
+
+    let colors = {
+        temp: '#03a9f4',
+        co2: '#9c27b0',
+        rh: '#00ae92',
+    } as any
 
     React.useEffect(() => {
         setLoading(true)
@@ -369,9 +375,11 @@ const IAQOccupancyMapFullScreened: React.FunctionComponent<IIAQOccupancyMapProps
         let min = ranges[_metric + 'min']
         let max = ranges[_metric + 'max']
 
-        if (val <= min) return iaqMin
-        if (val >= max) return iaqMax
-        return iaqBetween
+        let color = (colors as any)[metric]
+
+        if (val <= min) return lightenColor(color, 60);
+        if (val >= max) return darkenColor(color, 60);
+        return color
 
     }
 
@@ -504,15 +512,15 @@ const IAQOccupancyMapFullScreened: React.FunctionComponent<IIAQOccupancyMapProps
                             <div className="label">Total Floor area occupancy count</div>
                         </div>
                         <div className="legend-item ">
-                            <div className="indicator iaq" style={{ backgroundColor: iaqMax }}></div>
+                            <div className="indicator iaq" style={{ backgroundColor: darkenColor(colors[metric], 60) }}></div>
                             <div className="label">Greater than or equal to {getValue("max")}</div>
                         </div>
                         <div className="legend-item">
-                            <div className="indicator iaq" style={{ backgroundColor: iaqBetween }}></div>
+                            <div className="indicator iaq" style={{ backgroundColor: colors[metric] }}></div>
                             <div className="label">Between {getValue("between")}</div>
                         </div>
                         <div className="legend-item">
-                            <div className="indicator iaq" style={{ backgroundColor: iaqMin }}></div>
+                            <div className="indicator iaq" style={{ backgroundColor: lightenColor(colors[metric], 60) }}></div>
                             <div className="label">Less than or equal to {getValue("min")}</div>
                         </div>
                     </div>
@@ -547,13 +555,13 @@ registerWidget({
                 label: "Zoom",
                 name: "zoom",
                 type: "number",
-                
+
             },
             {
                 label: "Timer Interval(ms)",
                 name: "timerInterval",
                 type: "number",
-                
+
             },
             {
                 label: "Center (Latitude)",
